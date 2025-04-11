@@ -49,6 +49,13 @@ for i in range(-3,4):
 
 print(a_genestring[0])
 
+
+
+
+def reverse_string(s):
+  """Reverses a string using slicing."""
+  return s[::-1]
+
 def calcsim(a,b,offset):
   totalmatch = 0
   print('offset is ' + str(offset))
@@ -87,4 +94,20 @@ for i in range(-biggest_possible,biggest_possible):
     bestmatch = thismatch
 
 print('Best offset turns out to be ' + str(bestoffset) + ' with ' + str(bestmatch) + ' total matches')
+printoffset(a_genestring,b_genestring,bestoffset)
+
+print('What happens if we reverse second string?')
+
+b_genestring_reverse = reverse_string(b_genestring)
+
+
+bestoffset = -biggest_possible
+bestmatch = 0
+for i in range(-biggest_possible,biggest_possible):
+  thismatch = calcsim(a_genestring,b_genestring_reverse,i)
+  if thismatch > bestmatch:
+    bestoffset = i
+    bestmatch = thismatch
+
+print('Best offset in reverse turns out to be ' + str(bestoffset) + ' with ' + str(bestmatch) + ' total matches')
 printoffset(a_genestring,b_genestring,bestoffset)
