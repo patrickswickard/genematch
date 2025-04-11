@@ -1,7 +1,13 @@
 import gene_utils
 
-a = gene_utils.Genestring("RGBYYYGBBGYB")
-b = gene_utils.Genestring("GBRGBYYBYBR")
+#a_testvalue = "RGBYYYGBBGYB"
+#b_testvalue = "GBRGBYYBYBR"
+
+a_testvalue = "GYRGRBBYBGBRGBYYBYBR"
+b_testvalue = "GBRGBYYBYBRGBRYRGY"
+
+a = gene_utils.Genestring(a_testvalue)
+b = gene_utils.Genestring(b_testvalue)
 
 a.printstring()
 b.printstring()
@@ -52,7 +58,7 @@ def calcsim(a,b,offset):
   print(length_of_b)
   for i in range(0,length_of_a-1):
     a_index = i
-    b_index = i + offset
+    b_index = i - offset
     if a_index >= 0 and a_index < length_of_a and b_index >= 0 and b_index < length_of_b:
       print(str(a_index) + ' a index vs b index ' + str(b_index))
       print(a[a_index] + '---' + b[b_index])
@@ -62,9 +68,19 @@ def calcsim(a,b,offset):
   printoffset(a,b,offset)
   return totalmatch
 
+
+length_of_a_genestring = len(a_genestring) + 1
+length_of_b_genestring = len(b_genestring) + 1
+
+biggest_possible = max(length_of_a_genestring,length_of_b_genestring)
+
+
+
+
+
 bestoffset = -20
 bestmatch = 0
-for i in range(-20,20):
+for i in range(-biggest_possible,biggest_possible):
   thismatch = calcsim(a_genestring,b_genestring,i)
   if thismatch > bestmatch:
     bestoffset = i
