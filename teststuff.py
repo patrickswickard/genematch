@@ -40,3 +40,24 @@ def printoffset(a,b,offset):
 
 for i in range(-3,4):
   printoffset(a_genestring,b_genestring,i)
+
+print(a_genestring[0])
+
+def calcsim(a,b,offset):
+  totalmatch = 0
+  print('offset is ' + str(offset))
+  length_of_a = len(a)
+  length_of_b = len(b)
+  print(length_of_a)
+  print(length_of_b)
+  for i in range(0,length_of_a-1):
+    a_index = i
+    b_index = i + offset
+    if a_index < length_of_a and b_index < length_of_b:
+      print(str(a_index) + ' a index vs b index ' + str(b_index))
+      print(a[a_index] + '---' + b[b_index])
+      if a[a_index] == b[b_index]:
+        totalmatch += 1
+  print('Total matches: ' + str(totalmatch))
+
+calcsim(a_genestring,b_genestring,2)
