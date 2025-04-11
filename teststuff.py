@@ -78,7 +78,7 @@ biggest_possible = max(length_of_a_genestring,length_of_b_genestring)
 
 
 
-bestoffset = -20
+bestoffset = -biggest_possible
 bestmatch = 0
 for i in range(-biggest_possible,biggest_possible):
   thismatch = calcsim(a_genestring,b_genestring,i)
@@ -88,4 +88,3 @@ for i in range(-biggest_possible,biggest_possible):
 
 print('Best offset turns out to be ' + str(bestoffset) + ' with ' + str(bestmatch) + ' total matches')
 printoffset(a_genestring,b_genestring,bestoffset)
-calcsim(a_genestring,b_genestring,bestoffset)
