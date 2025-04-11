@@ -53,11 +53,21 @@ def calcsim(a,b,offset):
   for i in range(0,length_of_a-1):
     a_index = i
     b_index = i + offset
-    if a_index < length_of_a and b_index < length_of_b:
+    if a_index >= 0 and a_index < length_of_a and b_index >= 0 and b_index < length_of_b:
       print(str(a_index) + ' a index vs b index ' + str(b_index))
       print(a[a_index] + '---' + b[b_index])
       if a[a_index] == b[b_index]:
         totalmatch += 1
   print('Total matches: ' + str(totalmatch))
+  printoffset(a,b,offset)
+  return totalmatch
 
-calcsim(a_genestring,b_genestring,2)
+bestoffset = -20
+bestmatch = 0
+for i in range(-20,20):
+  thismatch = calcsim(a_genestring,b_genestring,i)
+  if thismatch > bestmatch:
+    bestoffset = i
+    bestmatch = thismatch
+
+print('Best offset turns out to be ' + str(bestoffset) + ' with ' + str(bestmatch) + ' total matches')
