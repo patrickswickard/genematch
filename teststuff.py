@@ -56,7 +56,7 @@ def calcsim(a,b,offset):
   length_of_b = len(b)
   print(length_of_a)
   print(length_of_b)
-  for i in range(0,length_of_a-1):
+  for i in range(0,length_of_a):
     a_index = i
     b_index = i - offset
     if a_index >= 0 and a_index < length_of_a and b_index >= 0 and b_index < length_of_b:
@@ -87,3 +87,5 @@ for i in range(-biggest_possible,biggest_possible):
     bestmatch = thismatch
 
 print('Best offset turns out to be ' + str(bestoffset) + ' with ' + str(bestmatch) + ' total matches')
+printoffset(a_genestring,b_genestring,bestoffset)
+calcsim(a_genestring,b_genestring,bestoffset)
