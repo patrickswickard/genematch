@@ -24,22 +24,19 @@ print(b_genelist)
 print(a_genestring)
 print(b_genestring)
 
-offset = -2
-
-offsetstring = ''
-for i in range(abs(offset)):
-  offsetstring += '_'
-
-print(offsetstring)
-
 print('**********************')
 
 def printoffset(a,b,offset):
+  offsetstring = ''
+  for i in range(abs(offset)):
+    offsetstring += '_'
   if offset >=0:
     print(a)
     print(offsetstring + b)
   else:
     print(offsetstring + a)
     print(b)
+  print('----------------------------')
 
-printoffset(a_genestring,b_genestring,offset)
+for i in range(-3,4):
+  printoffset(a_genestring,b_genestring,i)
