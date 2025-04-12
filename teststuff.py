@@ -5,6 +5,10 @@ import gene_utils
 
 a_testvalue = "GYRGRBBYBGBRGBYYBYBR"
 b_testvalue = "GBRGBYYBYBRGBRYRGY"
+                
+a_testvalue = "GCAGATTCTGTAGTCCTCTA"
+b_testvalue = "GTAGTCCTCTRGTACAGC"
+
 
 a = gene_utils.Genestring(a_testvalue)
 b = gene_utils.Genestring(b_testvalue)
