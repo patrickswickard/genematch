@@ -60,6 +60,22 @@ def reverse_string(s):
   """Reverses a string using slicing."""
   return s[::-1]
 
+def complement_string(s):
+  """Complements a string using clumsy crappy code, maybe improve this."""
+  newstring = ''
+  for i in s:
+    if i == 'A':
+      newstring += 'T'
+    elif i == 'T':
+      newstring += 'A'
+    elif i == 'C':
+      newstring += 'G'
+    elif i == 'G':
+      newstring += 'C'
+    else:
+      newstring += i
+  return newstring
+
 def calcsim(a,b,offset):
   totalmatch = 0
   #print('offset is ' + str(offset))
@@ -115,3 +131,6 @@ for i in range(-biggest_possible,biggest_possible):
 
 print('Best offset in reverse turns out to be ' + str(bestoffset) + ' with ' + str(bestmatch) + ' total matches')
 printoffset(a_genestring,b_genestring,bestoffset)
+
+print(a_genestring)
+print(complement_string(a_genestring))
