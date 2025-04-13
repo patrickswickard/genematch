@@ -95,12 +95,21 @@ def calcsim(a,b,offset):
   #printoffset(a,b,offset)
   return totalmatch
 
-
-length_of_a_genestring = len(a_genestring) + 1
-length_of_b_genestring = len(b_genestring) + 1
-
-biggest_possible = max(length_of_a_genestring,length_of_b_genestring)
-
+def repetitive_part(a_genestring,b_genestring):
+  length_of_a_genestring = len(a_genestring) + 1
+  length_of_b_genestring = len(b_genestring) + 1
+  biggest_possible = max(length_of_a_genestring,length_of_b_genestring)
+  b_genestring_reverse = reverse_string(b_genestring)
+  b_genestring_complement = complement_string(b_genestring)
+  b_genestring_revcomp = reverse_string(complement_string(b_genestring))
+  bestoffset = -biggest_possible
+  bestmatch = 0
+  for i in range(-biggest_possible,biggest_possible):
+    thismatch = calcsim(a_genestring,b_genestring,i)
+    if thismatch > bestmatch:
+      bestoffset = i
+      bestmatch = thismatch
+  return {"best_offset": bestoffset, "best_match": bestmatch}
 
 b_genestring_reverse = reverse_string(b_genestring)
 b_genestring_complement = complement_string(b_genestring)
@@ -108,57 +117,7 @@ b_genestring_revcomp = reverse_string(complement_string(b_genestring))
 
 print("Let us do some calculations...")
 
-bestoffset = -biggest_possible
-bestmatch = 0
-for i in range(-biggest_possible,biggest_possible):
-  thismatch = calcsim(a_genestring,b_genestring,i)
-  if thismatch > bestmatch:
-    bestoffset = i
-    bestmatch = thismatch
-
-print('Best offset turns out to be ' + str(bestoffset) + ' with ' + str(bestmatch) + ' total matches')
-printoffset(a_genestring,b_genestring,bestoffset)
-
-bestoffset = -biggest_possible
-bestmatch = 0
-for i in range(-biggest_possible,biggest_possible):
-  thismatch = calcsim(a_genestring,b_genestring_reverse,i)
-  if thismatch > bestmatch:
-    bestoffset = i
-    bestmatch = thismatch
-
-print('--------------------------------------')
-
-print('Best offset in reverse turns out to be ' + str(bestoffset) + ' with ' + str(bestmatch) + ' total matches')
-printoffset(a_genestring,b_genestring_reverse,bestoffset)
-
-print('--------------------------------------')
-
-bestoffset = -biggest_possible
-bestmatch = 0
-for i in range(-biggest_possible,biggest_possible):
-  thismatch = calcsim(a_genestring,b_genestring_complement,i)
-  if thismatch > bestmatch:
-    bestoffset = i
-    bestmatch = thismatch
-
-
-print('--------------------------------------')
-
-print('Best offset complement turns out to be ' + str(bestoffset) + ' with ' + str(bestmatch) + ' total matches')
-printoffset(a_genestring,b_genestring_complement,bestoffset)
-
-bestoffset = -biggest_possible
-bestmatch = 0
-for i in range(-biggest_possible,biggest_possible):
-  thismatch = calcsim(a_genestring,b_genestring_revcomp,i)
-  if thismatch > bestmatch:
-    bestoffset = i
-    bestmatch = thismatch
-
-
-print('Best offset in reverse complement turns out to be ' + str(bestoffset) + ' with ' + str(bestmatch) + ' total matches')
-printoffset(a_genestring,b_genestring_revcomp,bestoffset)
-
-
-print('--------------------------------------')
+print('Best offset turns out to be ' + str(repetitive_part(a_genestring, b_genestring)))
+print('Best offset in reverse turns out to be ' + str(repetitive_part(a_genestring, b_genestring_reverse)))
+print('Best offset in complement turns out to be ' + str(repetitive_part(a_genestring, b_genestring_complement)))
+print('Best offset in reverse complement turns out to be ' + str(repetitive_part(a_genestring, b_genestring_revcomp)))
