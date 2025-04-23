@@ -61,19 +61,46 @@ def reverse_string(s):
   return s[::-1]
 
 def complement_string(s):
-  """Complements a string using clumsy crappy code, maybe improve this."""
+  """Complements a string using clumsy crappy code, maybe improve this...now with degenerate bases!"""
   newstring = ''
   for i in s:
-    if i == 'A':
-      newstring += 'T'
-    elif i == 'T':
-      newstring += 'A'
-    elif i == 'C':
-      newstring += 'G'
-    elif i == 'G':
-      newstring += 'C'
-    else:
-      newstring += i
+    match i:
+      case 'A':
+        newstring += 'T'
+      case 'T':
+        newstring += 'A'
+      case 'C':
+        newstring += 'G'
+      case 'G':
+        newstring += 'C'
+      case 'U':
+        newstring += 'A'
+      case 'W':
+        newstring += 'W'
+      case 'S':
+        newstring += 'S'
+      case 'M':
+        newstring += 'K'
+      case 'K':
+        newstring += 'M'
+      case 'R':
+        newstring += 'Y'
+      case 'Y':
+        newstring += 'R'
+      case 'B':
+        newstring += 'V'
+      case 'D':
+        newstring += 'H'
+      case 'H':
+        newstring += 'D'
+      case 'V':
+        newstring += 'B'
+      case 'N':
+        newstring += 'N'
+      case '-':
+        newstring += '-'
+      case _:
+        newstring += '_'
   return newstring
 
 def calcsim(a,b,offset):
