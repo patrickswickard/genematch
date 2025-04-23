@@ -116,8 +116,27 @@ b_genestring_complement = complement_string(b_genestring)
 b_genestring_revcomp = reverse_string(complement_string(b_genestring))
 
 print("Let us do some calculations...")
+print("Finding best match for " + str(a_genestring) + ' and ' + str(b_genestring))
+solution1 = repetitive_part(a_genestring, b_genestring)
+print('Best offset turns out to be ' + str(solution1))
+best_offset1= solution1['best_offset']
+best_match1= solution1['best_match']
+printoffset(a_genestring,b_genestring,best_offset1)
 
-print('Best offset turns out to be ' + str(repetitive_part(a_genestring, b_genestring)))
-print('Best offset in reverse turns out to be ' + str(repetitive_part(a_genestring, b_genestring_reverse)))
-print('Best offset in complement turns out to be ' + str(repetitive_part(a_genestring, b_genestring_complement)))
-print('Best offset in reverse complement turns out to be ' + str(repetitive_part(a_genestring, b_genestring_revcomp)))
+solution2 = repetitive_part(a_genestring, b_genestring_reverse)
+print('Best offset in reverse turns out to be ' + str(solution2))
+best_offset2= solution2['best_offset']
+best_match2= solution2['best_match']
+printoffset(a_genestring,b_genestring_reverse,best_offset2)
+
+solution3 = repetitive_part(a_genestring, b_genestring_complement)
+print('Best offset in complement turns out to be ' + str(solution3))
+best_offset3= solution3['best_offset']
+best_match3= solution3['best_match']
+printoffset(a_genestring,b_genestring_complement,best_offset3)
+
+solution4 = repetitive_part(a_genestring, b_genestring_revcomp)
+print('Best offset in reverse complement turns out to be ' + str(solution4))
+best_offset4= solution4['best_offset']
+best_match4= solution4['best_match']
+printoffset(a_genestring,b_genestring_revcomp,best_offset4)
