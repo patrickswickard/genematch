@@ -3,8 +3,8 @@ import gene_utils
 #a_testvalue = "RGBYYYGBBGYB"
 #b_testvalue = "GBRGBYYBYBR"
 
-a_testvalue = "GYRGRBBYBGBRGBYYBYBR"
-b_testvalue = "GBRGBYYBYBRGBRYRGY"
+#a_testvalue = "GYRGRBBYBGBRGBYYBYBR"
+#b_testvalue = "GBRGBYYBYBRGBRYRGY"
                 
 a_testvalue = "GCAGATTCTGTAGTCCTCTA"
 b_testvalue = "GTAGTCCTCTAGTACAGC"
@@ -95,7 +95,7 @@ def calcsim(a,b,offset):
   #printoffset(a,b,offset)
   return totalmatch
 
-def repetitive_part(a_genestring,b_genestring):
+def find_best_offset(a_genestring,b_genestring):
   length_of_a_genestring = len(a_genestring) + 1
   length_of_b_genestring = len(b_genestring) + 1
   biggest_possible = max(length_of_a_genestring,length_of_b_genestring)
@@ -117,25 +117,25 @@ b_genestring_revcomp = reverse_string(complement_string(b_genestring))
 
 print("Let us do some calculations...")
 print("Finding best match for " + str(a_genestring) + ' and ' + str(b_genestring))
-solution1 = repetitive_part(a_genestring, b_genestring)
+solution1 = find_best_offset(a_genestring, b_genestring)
 print('Best offset turns out to be ' + str(solution1))
 best_offset1= solution1['best_offset']
 best_match1= solution1['best_match']
 printoffset(a_genestring,b_genestring,best_offset1)
 
-solution2 = repetitive_part(a_genestring, b_genestring_reverse)
+solution2 = find_best_offset(a_genestring, b_genestring_reverse)
 print('Best offset in reverse turns out to be ' + str(solution2))
 best_offset2= solution2['best_offset']
 best_match2= solution2['best_match']
 printoffset(a_genestring,b_genestring_reverse,best_offset2)
 
-solution3 = repetitive_part(a_genestring, b_genestring_complement)
+solution3 = find_best_offset(a_genestring, b_genestring_complement)
 print('Best offset in complement turns out to be ' + str(solution3))
 best_offset3= solution3['best_offset']
 best_match3= solution3['best_match']
 printoffset(a_genestring,b_genestring_complement,best_offset3)
 
-solution4 = repetitive_part(a_genestring, b_genestring_revcomp)
+solution4 = find_best_offset(a_genestring, b_genestring_revcomp)
 print('Best offset in reverse complement turns out to be ' + str(solution4))
 best_offset4= solution4['best_offset']
 best_match4= solution4['best_match']
